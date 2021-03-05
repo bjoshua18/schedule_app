@@ -1,0 +1,22 @@
+%h1 Sign Up
+
+= form_with model: @user, local: true do |form|
+	- if @user.errors.any?
+		.alert.alert-danger
+			- @user.errors.full_messages.each do |message|
+				.error_msg= message
+
+	.mb-3
+		= form.label :username
+		= form.text_field :username, class: 'form-control'
+	.mb-3
+		= form.label :email
+		= form.text_field :email, class: 'form-control'
+	.mb-3
+		= form.label :password
+		= form.password_field :password, class: 'form-control'
+	.mb-3
+		= form.label :password_confirmation
+		= form.password_field :password_confirmation, class: 'form-control'
+	.mb-3
+		= form.submit 'Sign Up', class: 'btn btn-primary'

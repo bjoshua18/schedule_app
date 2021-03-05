@@ -1,0 +1,19 @@
+%nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+	.container-fluid
+		= link_to 'Navbar', root_path, class: 'navbar-brand'
+		%button.navbar-toggler{"aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarNav", "data-bs-toggle" => "collapse", :type => "button"}
+			%span.navbar-toggler-icon
+		#navbarNav.collapse.navbar-collapse
+			%ul.navbar-nav
+				%li.nav-item= link_to 'Home', root_path, class: 'nav-link active'
+				%li.nav-item= link_to 'About', root_path, class: 'nav-link'
+		.d-flex.dropdown
+			- if Current.user
+				%a.nav-link.dropdown-toggle.text-light{href: '', id: 'navbarDropdown', role: 'button', 'data-bs-toggle': 'dropdown', 'aria-expanded': 'false'}
+					%i.bi.bi-person-fill.fs-4
+				%ul.dropdown-menu{'aria-labelledby': 'navbarDropdown'}
+					%li= link_to 'Logout', logout_path, method: :delete, class: 'nav-link'
+			- else
+				%ul.navbar-nav
+					%li.nav-item= link_to 'Login', login_path, class: 'nav-link'
+					%li.nav-item= link_to 'Signup', signup_path, class: 'nav-link'			

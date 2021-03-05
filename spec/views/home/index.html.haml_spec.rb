@@ -5,6 +5,6 @@ RSpec.describe "home/index.html.haml", type: :view do
     assign(:home, HomeController.new)
     render
     
-    expect(rendered).to match /Schedule Post App/
+    expect(rendered).to match /Welcome to Schedule Post App/
   end
 end
