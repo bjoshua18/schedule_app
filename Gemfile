@@ -53,3 +53,7 @@ group :test do
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'
 end
+
+# Authorization
+gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter'
+gem 'omniauth-rails_csrf_protection'

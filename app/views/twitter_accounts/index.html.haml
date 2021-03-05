@@ -1,0 +1,13 @@
+.d-flex.align-items-center.justify-content-between.my-4
+	%h1 Twitter Accounts
+
+	= button_to 'auth/twitter', method: :post, class: 'btn btn-primary' do
+		%i.bi.bi-twitter
+		Connect new account
+
+- @twitter_accounts.each do |acc|
+	.d-flex.align-items-center.mb-4
+		.me-4
+			= image_tag acc.image, class: 'rounded-circle me-4'
+			= link_to "@#{acc.username}", "https://twitter.com/#{acc.username}", class: 'link-primary', target: '_blank'
+		= button_to 'Disconnect', acc, method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger'

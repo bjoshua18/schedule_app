@@ -7,6 +7,8 @@ class User
   field :email, type: String, default: ''
   field :password_digest, type: String
 
+  has_many :twitter_accounts
+
   has_secure_password
 
   validates :username, presence: true, uniqueness: true

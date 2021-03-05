@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/arunagw/omniauth-twitter.git
+  revision: 41c7be0f169dfd816a78f533b89047e6b29fe0bc
+  specs:
+    omniauth-twitter (1.4.0)
+      omniauth-oauth (~> 1.1)
+      rack
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -98,6 +106,7 @@ GEM
       activesupport (>= 4.0.1)
       hamlit (>= 1.2.0)
       railties (>= 4.0.1)
+    hashie (4.1.0)
     i18n (1.8.9)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.2)
@@ -137,11 +146,24 @@ GEM
     nokogiri (1.11.1)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
+    oauth (0.5.5)
+    omniauth (2.0.3)
+      hashie (>= 3.4.6)
+      rack (>= 1.6.2, < 3)
+      rack-protection
+    omniauth-oauth (1.2.0)
+      oauth
+      omniauth (>= 1.0, < 3)
+    omniauth-rails_csrf_protection (1.0.0)
+      actionpack (>= 4.2)
+      omniauth (~> 2.0)
     public_suffix (4.0.6)
     puma (4.3.7)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
+    rack-protection (2.1.0)
+      rack
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
@@ -264,6 +286,8 @@ DEPENDENCIES
   listen (~> 3.2)
   mongoid (~> 7.0.5)
   mongoid-rspec
+  omniauth-rails_csrf_protection
+  omniauth-twitter!
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.5)
   rails-controller-testing
