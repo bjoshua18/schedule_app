@@ -1,0 +1,15 @@
+= form_with model: post, local: true do |form|
+	= render 'shared/form_errors', form: form
+	
+	.mb-3
+		= form.label :twitter_account_id
+		= form.collection_select :twitter_account_id, Current.user.twitter_accounts, :id, :username, {}, { class: 'form-control' }
+	.mb-3
+		= form.label :body
+		= form.text_area :body, class: 'form-control'
+	.mb-3
+		= form.label :publish_at
+		.form-control
+			= form.datetime_field :publish_at, value: (post.publish_at || DateTime.now).strftime('%Y-%m-%dT%H:%M')
+
+	= form.button 'Schedule', class: 'btn btn-primary'

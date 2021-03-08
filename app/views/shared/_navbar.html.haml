@@ -7,6 +7,7 @@
 			%ul.navbar-nav
 				%li.nav-item= link_to 'Home', root_path, class: 'nav-link active'
 				- if Current.user
+					%li.nav-item= link_to 'Posts', posts_path, class: 'nav-link'
 					%li.nav-item= link_to 'Twitter Accounts', twitter_accounts_path, class: 'nav-link'
 		.d-flex.dropdown
 			- if Current.user

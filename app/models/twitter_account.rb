@@ -9,6 +9,7 @@ class TwitterAccount
   field :secret, type: String
 
   belongs_to :user
+  has_many :posts
 
   validates :username, uniqueness: true
 end

@@ -1,10 +1,7 @@
 %h1 Sign Up
 
 = form_with model: @user, local: true do |form|
-	- if @user.errors.any?
-		.alert.alert-danger
-			- @user.errors.full_messages.each do |message|
-				.error_msg= message
+	= render 'shared/form_errors', form: form
 
 	.mb-3
 		= form.label :username

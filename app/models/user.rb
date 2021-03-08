@@ -8,6 +8,7 @@ class User
   field :password_digest, type: String
 
   has_many :twitter_accounts
+  has_many :posts
 
   has_secure_password
 

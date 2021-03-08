@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authorize, only: [:new, :edit]
+  skip_before_action :authorize, only: [:new, :create, :edit]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
