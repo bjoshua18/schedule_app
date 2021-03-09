@@ -1,0 +1,14 @@
+%h1 Users List
+
+%table.table.table-striped.table-hover.table-bordered
+	%thead
+		%tr
+			%th{scope: 'col'} #
+			%th{scope: 'col'} Username
+			%th{scope: 'col'} Email
+	%tbody
+		- @users.each_with_index do |user, i|
+			%tr
+				%td= i + 1
+				%td= user.username
+				%td= user.email
