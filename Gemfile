@@ -54,6 +54,12 @@ group :test do
   gem 'selenium-webdriver'
 end
 
+# DateTime Validations
+# gem 'validates_timeliness', '~> 3.0.5'
+
 # Authorization
 gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter'
 gem 'omniauth-rails_csrf_protection'
+
+# Twitter API
+gem 'twitter'

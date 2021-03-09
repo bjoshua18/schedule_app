@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 	before_action :set_post, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@posts = Current.user.posts
+		@posts = Current.user.posts.order_by(publish_at: 1)
 	end
 
 	def new

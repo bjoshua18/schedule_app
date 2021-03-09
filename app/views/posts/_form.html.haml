@@ -10,6 +10,6 @@
 	.mb-3
 		= form.label :publish_at
 		.form-control
-			= form.datetime_field :publish_at, value: (post.publish_at || DateTime.now).strftime('%Y-%m-%dT%H:%M')
+			= form.datetime_field :publish_at, value: post.publish_at.strftime('%Y-%m-%dT%H:%M')
 
 	= form.button 'Schedule', class: 'btn btn-primary'
