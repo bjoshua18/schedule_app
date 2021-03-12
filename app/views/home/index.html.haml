@@ -1,17 +1,26 @@
 -# Vista provisional
 
 .d-flex.align-items-center.justify-content-center
-	%h1 Schedule Post App
+  %h1 Schedule Post App
 
 - if Current.user
-	.container-user.d-flex.flex-column.align-items-center
-		%h3= "Welcome back, <b>#{Current.user.username}</b>!".html_safe
-		.btns.d-flex
-			- if Current.user.twitter_accounts.none?
-				= button_to 'auth/twitter', method: :post, class: 'btn btn-primary' do
-					%i.bi.bi-twitter
-					Connect
-			- else
-				%p
-					%i.bi.bi-twitter
-					%b= "@#{Current.user.twitter_accounts.first.username}"
+  .container-user
+    %h3.text-center= "Welcome back, <b>#{Current.user.username}</b>!".html_safe
+    .btns.d-flex.flex-column.align-items-center
+      - if Current.user.twitter_accounts.none?
+        = button_to 'auth/twitter', method: :post, class: 'btn btn-primary' do
+          %i.bi.bi-twitter
+          Connect
+      - else
+        %p
+          %i.bi.bi-twitter
+          %b= "@#{Current.user.twitter_accounts.first.username}"
+
+      - if Current.user.facebook_accounts.none?
+        = button_to 'auth/facebook', method: :post, class: 'btn btn-primary' do
+          %i.bi.bi-facebook
+          Connect
+      - else
+        %p
+          %i.bi.bi-facebook
+          %b= Current.user.facebook_accounts.first.name

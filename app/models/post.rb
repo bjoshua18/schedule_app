@@ -28,6 +28,7 @@ class Post
 
   def publish_to_twitter!
     tweet = twitter_account.client.update(body)
+    # tweet = twitter_account.client.update_with_media(body, File.new(Rails.root.join('app', 'assets', 'images', 'page_flow.png')))
     update(tweet_id: tweet.id)
   end
 end

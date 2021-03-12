@@ -37,6 +37,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
 
   config.include FactoryBot::Syntax::Methods
+  config.include Mongoid::Matchers, type: :model
 
   config.before(:suite) do
     DatabaseCleaner.orm = 'mongoid'

@@ -1,8 +1,9 @@
 FactoryBot.define do
   factory :post do
-    user { nil }
-    body { "MyText" }
-    publish_at { "2021-03-05 16:38:43" }
-    tweet_id { "MyString" }
+    user
+    twitter_account { user.twitter_account }
+    sequence(:body) { |n| "Test post #{n}" }
+    publish_at { Datetime.current + 7.days }
+    tweet_id { nil }
   end
 end

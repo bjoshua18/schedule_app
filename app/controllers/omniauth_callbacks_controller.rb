@@ -8,7 +8,20 @@ class OmniauthCallbacksController < ApplicationController
       secret: auth.credentials.secret,
     })
 
-    redirect_to twitter_accounts_path, notice: 'Successfully connected your account'
+    redirect_to twitter_accounts_url, notice: 'Successfully connected your account'
+  end
+
+  def facebook
+    facebook_account = Current.user.facebook_accounts.where(email: auth.info.email).first_or_initialize
+    facebook_account.update({
+      name: auth.info.name,
+      email: auth.info.email,
+      image: auth.info.image,
+      token: auth.credentials.token,
+      token_expires_at: auth.credentials.expires_at
+    })
+
+    redirect_to facebook_accounts_url, notice: 'Successfully connected your account'
   end
 
   def auth
