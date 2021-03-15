@@ -9,5 +9,5 @@
   .d-flex.align-items-center.mb-4
     .me-4
       = image_tag acc.image, class: 'rounded-circle me-4'
-      -# = link_to acc.name, acc.account.get_object('me'), class: 'link-primary', target: '_blank'
+      = acc.name
     = button_to 'Disconnect', acc, method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger'
