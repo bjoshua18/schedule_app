@@ -1,11 +1,9 @@
 %h1 Login
 
-= form_with url: login_path do |form|
-	.mb-3
-		= form.label :email
-		= form.text_field :email, class: 'form-control'
-	.mb-3
-		= form.label :password
-		= form.password_field :password, class: 'form-control'
-	.mb-3
-		= form.submit 'Login', class: 'btn btn-primary'
+= simple_form_for :user, url: login_path do |f|
+  .mb-3
+    = f.input :email, label: 'Email: ', input_html: { class: 'form-control' }
+  .mb-3
+    = f.input :password, input_html: { class: 'form-control' }
+  .mb-3
+    = f.submit 'Login', class: 'btn btn-primary'

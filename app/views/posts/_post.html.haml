@@ -1,19 +1,19 @@
 .mb-3.card.card-body
-	%p= post.body
-	.me-4.d-flex.justify-content-between
-		.image
-			= image_tag post.twitter_account.image, class: 'rounded-circle me-4 w-100'
-		= link_to "@#{post.twitter_account.username}", "https://twitter.com/#{post.twitter_account.username}", class: 'link-primary', target: '_blank'
+  %p= post.body
+  .me-4.d-flex.justify-content-between
+    .image
+      = image_tag post.twitter_account.image, class: 'rounded-circle me-4 w-100'
+    = link_to "@#{post.twitter_account.username}", "https://twitter.com/#{post.twitter_account.username}", class: 'link-primary', target: '_blank'
 
-		- if post.published?
-			= link_to 'View Tweet', "https://twitter.com/#{post.twitter_account.username}/status/#{post.tweet_id}", target: :_blank
-		- else
-			.d-flex.justify-content-between
-				.date.m-4
-					Scheduled for 
-					%b
-						= l post.publish_at, format: :long
-				= link_to edit_post_path(post), class: 'btn btn-primary m-4' do
-					%i.bi.bi-pencil-square
-				= button_to post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger m-4' do
-					%i.bi.bi-trash-fill
+    - if post.published?
+      = link_to 'View Tweet', "https://twitter.com/#{post.twitter_account.username}/status/#{post.tweet_id}", target: :_blank
+    - else
+      .d-flex.justify-content-between
+        .date.m-4
+          Scheduled for 
+          %b
+            = l post.publish_at, format: :long
+        = link_to edit_post_path(post), class: 'btn btn-primary m-4' do
+          %i.bi.bi-pencil-square
+        = button_to post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger m-4' do
+          %i.bi.bi-trash-fill

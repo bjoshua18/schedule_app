@@ -59,7 +59,13 @@ end
 
 # Authorization
 gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter'
+# gem 'omniauth-instagram-graph'
+gem 'omniauth-facebook', '~> 8.0.0'
 gem 'omniauth-rails_csrf_protection'
 
 # Twitter API
 gem 'twitter'
+# Facebook API
+gem 'koala'
+
+gem 'simple_form'

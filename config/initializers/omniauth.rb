@@ -1,3 +1,16 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :twitter, Rails.application.credentials.dig(:twitter, :api_key), Rails.application.credentials.dig(:twitter, :api_secret)
+  # Twitter
+  provider(
+    :twitter,
+    Rails.application.credentials.dig(:twitter, :api_key),
+    Rails.application.credentials.dig(:twitter, :api_secret)
+  )
+  # Facebook
+  provider(
+    :facebook,
+    Rails.application.credentials.dig(:facebook, :api_key),
+    Rails.application.credentials.dig(:facebook, :api_secret),
+    # Permissions
+    scope: 'email,public_profile'
+  )
 end
