@@ -6,11 +6,13 @@ class Post
   field :publish_at, type: Time
   field :tweet_id, type: String
 
+  index({publish_at: -1})
+
   belongs_to :user
   belongs_to :twitter_account
 
   validates :body, length: { minimum: 1, maximun: 280 }
-  validates :publish_at, presence: true #, timeliness: { type: :datetime, after: :now }
+  validates :publish_at, presence: true
 
   after_initialize do
     self.publish_at ||= 1.minute.from_now
