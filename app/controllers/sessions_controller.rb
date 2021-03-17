@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   skip_before_action :authorize
-  
+  before_action :redirect_if_current_user_exist, only: [:new, :create]
+
   def new
   end
 

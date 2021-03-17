@@ -2,8 +2,11 @@
 Rails.application.routes.draw do
   get 'omniauth_callbacks/twitter'
   # Sign up, sign in
-  get 'signup', to: 'users#new'
-  resources :users
+  controller :users do
+    get 'signup' => :new
+    get 'users' => :index
+    post 'users' => :create
+  end
   controller :sessions do
     get 'login' => :new
     post 'login' => :create

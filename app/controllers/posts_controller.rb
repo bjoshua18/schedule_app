@@ -31,11 +31,10 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    notice = 'Post not found'
     if @post
       notice = @post.destroy ? 'Post was unscheduled' : 'Something was wrong'
     end
-    redirect_to posts_url, notice: notice
+    redirect_to posts_url, notice: notice || 'Post not found'
   end
 
   private

@@ -6,11 +6,10 @@ class TwitterAccountsController < ApplicationController
   end
 
   def destroy
-    notice = 'Twitter account not found'
     if (@twitter_account)
       notice = @twitter_account.destroy ? "Successfully disconnected @#{@twitter_account.username}" : 'Something was wrong, unable to disconnect twitter account'
     end
-    redirect_to twitter_accounts_url, notice: notice
+    redirect_to twitter_accounts_url, notice: notice || 'Twitter account not found'
   end
 
   private
