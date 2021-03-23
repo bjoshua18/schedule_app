@@ -7,9 +7,9 @@ class User
   field :email, type: String, default: ''
   field :password_digest, type: String
 
-  has_many :twitter_accounts
-  has_many :facebook_accounts
-  has_many :posts
+  has_many :twitter_accounts, dependent: :destroy
+  has_many :facebook_accounts, dependent: :destroy
+  has_many :posts, dependent: :destroy
 
   has_secure_password
 

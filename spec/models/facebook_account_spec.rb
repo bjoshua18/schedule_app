@@ -16,4 +16,28 @@ RSpec.describe FacebookAccount, type: :model do
 
     it { is_expected.to validate_uniqueness_of(:email) }
   end
+
+  describe '#save' do
+    context 'with params from FactoryBot' do
+      subject(:facebook_account) { build(:facebook_account) }
+
+      it { is_expected.to be_valid }
+
+      context 'after_save' do
+        before(:each) { facebook_account.save }
+
+        it { is_expected.to be_persisted }
+      end
+    end
+
+    context 'with wrong params from scratch' do
+      subject(:post) do
+        described_class.new(
+          email: ''
+        )
+      end
+  
+      it { is_expected.not_to be_valid }
+    end
+  end
 end
