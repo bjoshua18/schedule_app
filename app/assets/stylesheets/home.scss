@@ -1,3 +1,42 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.counters {
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+  }
+}
+.counter {
+  display: flex;
+  background-color: #3f4750;
+  margin: 1rem;
+  padding: 1rem;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, .5);
+  align-items: center;
+  justify-content: space-around;
+
+  h3 {
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
+  .count {
+    font-size: 30px;
+    font-weight: 700;
+  }
+  p {
+    font-size: 16px;
+    margin-top: 0;
+  }
+  i {
+    font-size: 3.5rem;
+    opacity: .7;
+  }
+
+  &:hover {
+    background-color: #2a3036;
+  }
+}

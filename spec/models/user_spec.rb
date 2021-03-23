@@ -63,4 +63,40 @@ RSpec.describe User, type: :model do
       it { is_expected.not_to be_valid }
     end
   end
+
+  context '#total_accounts' do
+    describe 'user with accounts' do
+      subject(:user) { create :user_with_many_accounts, tw_counter: 3, fb_counter: 3 }
+  
+      it 'return the sum of all accounts' do
+        expect(subject.total_accounts).to eq(6)
+      end
+    end
+  
+    describe 'user without accounts' do
+      subject(:user) { create :user }
+  
+      it 'return 0' do
+        expect(subject.total_accounts).to eq(0)
+      end
+    end
+  end
+
+  context '#has_any_account?' do
+    describe 'user with accounts' do
+      subject(:user) { create :user_with_many_accounts, tw_counter: 1, fb_counter: 1 }
+
+      it 'return true' do
+        expect(subject.has_any_account?).to eq true
+      end
+    end
+
+    describe 'user without accounts' do
+      subject(:user) { create :user }
+      
+      it 'return false' do
+        expect(subject.has_any_account?).to eq false
+      end
+    end
+  end
 end

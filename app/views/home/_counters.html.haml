@@ -1,0 +1,5 @@
+-# Provisional, tal vez crear un controlador counter?
+.counters
+  = render 'counter', counter: scheduled_posts.count, counter_name: 'Scheduled Posts', icon: 'bi-calendar-check-fill'
+  = render 'counter', counter: Current.user.posts.count, counter_name: 'Total Posts', icon: 'bi-file-earmark-richtext-fill'
+  = render 'counter', counter: Current.user.total_accounts, counter_name: 'Accounts', icon: 'bi-person-fill'

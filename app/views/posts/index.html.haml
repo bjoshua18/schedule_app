@@ -1,13 +1,13 @@
-.d-flex.justify-content-between.align-items-center
+.posts-title.d-flex.justify-content-between.align-items-center
   %h1 Posts
 
-  = link_to 'Schedule a Post', new_post_path, class: 'btn btn-primary'
+  = link_to new_post_path, class: 'btn btn-primary' do
+    %i.bi.bi-pencil-square.icon_mr
+    Schedule a Post
 
-.d-flex
-  -if Current.user.twitter_accounts.none?
-    = button_to 'auth/twitter', method: :post, class: 'btn btn-primary' do
-      %i.bi.bi-twitter
-      Connect a Twitter Account
+- unless Current.user.has_any_account?
+  .d-flex
+    = render 'shared/new_account_btns'
 
 .posts
   = render @posts

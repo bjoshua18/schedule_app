@@ -1,9 +1,13 @@
 FactoryBot.define do
   factory :post do
-    user
-    twitter_account { user.twitter_account }
+    user { create :user_with_many_accounts, tw_counter: 1, fb_counter: 1 }
+    twitter_account { user.twitter_accounts[0] }
     sequence(:body) { |n| "Test post #{n}" }
     publish_at { DateTime.current + 7.days }
     tweet_id { nil }
+
+    factory :published_post do
+      tweet_id { '1372176407267250182' }
+    end
   end
 end
