@@ -3,7 +3,7 @@ FactoryBot.define do
     user
     twitter_account { user.twitter_account }
     sequence(:body) { |n| "Test post #{n}" }
-    publish_at { Datetime.current + 7.days }
+    publish_at { DateTime.current + 7.days }
     tweet_id { nil }
   end
 end

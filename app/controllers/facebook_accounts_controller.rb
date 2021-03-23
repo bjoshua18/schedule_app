@@ -6,11 +6,10 @@ class FacebookAccountsController < ApplicationController
   end
 
   def destroy
-    notice = 'Facebook account not found'
     if (@facebook_account)
       notice = @facebook_account.destroy ? "Successfully disconnected #{@facebook_account.email}" : 'Something was wrong, unable to disconnect facebook account'
     end
-    redirect_to facebook_accounts_url, notice: notice
+    redirect_to facebook_accounts_url, notice: notice || 'Facebook account not found'
   end
 
   private

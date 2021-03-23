@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :authorize, only: [:new, :create, :edit]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :redirect_if_current_user_exist, only: [:new, :create]
 
   def index
     @users = User.order(created_at: 1)
