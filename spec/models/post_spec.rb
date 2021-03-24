@@ -15,8 +15,6 @@ RSpec.describe Post, type: :model do
     it { is_expected.to belong_to(:twitter_account) }
     it { is_expected.to belong_to(:facebook_account) }
 
-    it { is_expected.to validate_presence_of(:provider) }
-    it { is_expected.to validate_inclusion_of(:provider) }
     it { is_expected.to validate_length_of(:body) }
     it { is_expected.to validate_presence_of(:publish_at) }
   end
