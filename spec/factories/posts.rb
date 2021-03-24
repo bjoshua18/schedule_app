@@ -7,7 +7,7 @@ FactoryBot.define do
     post_id { nil }
 
     factory :published_post do
-      tweet_id { '1372176407267250182' }
+      post_id { '1372176407267250182' }
     end
   end
 end

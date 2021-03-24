@@ -1,8 +1,10 @@
 .post
   .author
     .author-image
-      = image_tag post.twitter_account.image, class: 'rounded-circle me-4 w-100'
-    = link_to "@#{post.twitter_account.username}", "https://twitter.com/#{post.twitter_account.username}", class: 'link-primary', target: '_blank'
+      -# if provisional
+      - if post.twitter_account 
+        = image_tag post.twitter_account.image, class: 'rounded-circle me-4 w-100' 
+        = link_to "@#{post.twitter_account.username}", "https://twitter.com/#{post.twitter_account.username}", class: 'link-primary', target: '_blank'
   .post-image.w-100
     -# provisional
     = image_tag "https://loremflickr.com/320/240/dog?random=#{post.id}"
@@ -12,7 +14,9 @@
       - if post.published?
         .post-date
           = "#{time_ago_in_words post.publish_at} ago"
-        = link_to 'View Tweet', "https://twitter.com/#{post.twitter_account.username}/status/#{post.tweet_id}", target: :_blank
+        -# if provisional  
+        - if post.twitter_account  
+          = link_to 'View Tweet', "https://twitter.com/#{post.twitter_account.username}/status/#{post.post_id}", target: :_blank
       - else
         .post-date
           Scheduled for 
