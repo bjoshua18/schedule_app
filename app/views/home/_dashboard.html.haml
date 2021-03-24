@@ -1,0 +1,24 @@
+.container-user.mt-4
+  .row
+    .col
+      %h3.text-center= "Welcome back, <b>#{Current.user.username}</b>!".html_safe
+  .row
+    .col
+      .btns.d-flex.justify-content-center
+        - if Current.user.has_any_account?
+          = link_to new_post_url, class: 'btn btn-success mx-2 text-white new_post_btn' do
+            %i.bi.bi-pencil-square.icon_mr
+            Schedule a Post
+        = render 'shared/new_account_btns'
+  .row
+    .col
+      = render 'counters'
+      
+  - if Current.user.posts.any?
+    .row.my-5.posts-summary
+      .col-lg-6.col-sm-12
+        %h2 UPCOMING
+        = render scheduled_posts.limit(5)
+      .col-lg-6.col-sm-12
+        %h2 LATESTS
+        = render published_posts.limit(5)

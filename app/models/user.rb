@@ -15,4 +15,12 @@ class User
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'Must be a valid email' }
+
+  def total_accounts
+    twitter_accounts.count + facebook_accounts.count
+  end
+
+  def has_any_account?
+    total_accounts > 0
+  end
 end

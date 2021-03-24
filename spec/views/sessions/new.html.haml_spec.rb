@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "sessions/new.html.haml", type: :view do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'render login form' do
+    render
+    expect(response).to render_template 'sessions/new'
+    expect(response.body).to include 'simple_form user'
+  end
 end
