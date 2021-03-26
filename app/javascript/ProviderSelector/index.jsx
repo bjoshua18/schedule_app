@@ -10,6 +10,8 @@ class ProviderSelector extends React.Component {
         super(props);
         this.onProviderSelected = this.onProviderSelected.bind(this);
         this.state = { selectedProvider: null }
+        console.log('Twitter', props.tw_accounts);
+        console.log('Facebook', props.fb_accounts);
   }
 
   render() {
@@ -24,7 +26,7 @@ class ProviderSelector extends React.Component {
       <div>
         <div className="form-group mb-3">
           <label htmlFor="post_provider">Provider</label>
-          <select className="form-control" id="post_provider" onChange={this.onProviderSelected} name="post[provider]">
+          <select className="form-control" id="provider" onChange={this.onProviderSelected} name="provider">
             <option value="">Select a provider</option>
             <option value="Facebook">Facebook</option>
             <option value="Twitter">Twitter</option>

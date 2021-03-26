@@ -6,9 +6,17 @@
       %th{scope: 'col'} #
       %th{scope: 'col'} Username
       %th{scope: 'col'} Email
+      %th{scope: 'col'} Twitter Accounts
+      %th{scope: 'col'} Facebook Accounts
   %tbody
     - @users.each_with_index do |user, i|
       %tr
         %td= i + 1
         %td= user.username
         %td= user.email
+        %td
+          - user.twitter_accounts.each do |acc|
+            %div= acc.username
+        %td
+          - user.facebook_accounts.each do |acc|
+            %div= acc.email

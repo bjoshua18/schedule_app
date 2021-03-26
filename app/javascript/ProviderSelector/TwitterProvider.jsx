@@ -3,7 +3,6 @@ import React from 'react'
 class TwitterProvider extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props.tw_accounts)
   }
 
   render() {
@@ -18,7 +17,7 @@ class TwitterProvider extends React.Component {
           <label htmlFor="post_twitter_account_id">
             Twitter User
           </label>
-          <select className="form-control" id="post_twitter_account_id" name="post[twitter_account_id]">
+          <select className="form-control" id="post_publisher_id" name="post[publisher_id]">
             <option value="">Select an user</option>
             {options}
           </select>
