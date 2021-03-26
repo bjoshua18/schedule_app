@@ -10,8 +10,6 @@ class ProviderSelector extends React.Component {
         super(props);
         this.onProviderSelected = this.onProviderSelected.bind(this);
         this.state = { selectedProvider: null }
-        console.log('Twitter', props.tw_accounts);
-        console.log('Facebook', props.fb_accounts);
   }
 
   render() {

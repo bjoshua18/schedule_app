@@ -5,32 +5,27 @@ RSpec.describe Post, type: :model do
     it { is_expected.to be_mongoid_document }
     it { is_expected.to have_timestamps }
 
-    it { is_expected.to have_field(:provider).of_type(String) }
     it { is_expected.to have_field(:body).of_type(String) }
     it { is_expected.to have_field(:publish_at).of_type(Time) }
     it { is_expected.to have_field(:post_id).of_type(String) }
-    it { is_expected.to have_field(:facebook_account_page).of_type(Integer) }
 
     it { is_expected.to belong_to(:user) }
-    it { is_expected.to belong_to(:twitter_account) }
-    it { is_expected.to belong_to(:facebook_account) }
+    it { is_expected.to belong_to(:publisher) }
 
     it { is_expected.to validate_length_of(:body) }
     it { is_expected.to validate_presence_of(:publish_at) }
   end
 
   describe '#save' do
-    context 'Facebook post with params from scratch' do
+    context 'Twitter post with params from scratch' do
       let(:user) { create :user }
-      let(:facebook_account) { create :facebook_account }
+      let(:twitter_account) { create :twitter_account }
 
       subject(:post) do
         described_class.new(
           user: user,
-          facebook_account: facebook_account,
-          provider: 'Facebook',
+          publisher: twitter_account,
           body: 'Test body',
-          facebook_account_page: 0 ,
           publish_at: DateTime.current + 7.days,
           post_id: nil
         )
@@ -45,15 +40,14 @@ RSpec.describe Post, type: :model do
       end
     end
 
-    context 'Twitter post with params from scratch' do
+    context 'Facebook post with params from scratch' do
       let(:user) { create :user }
-      let(:twitter_account) { create :twitter_account }
+      let(:facebook_page) { create :facebook_page }
 
       subject(:post) do
         described_class.new(
           user: user,
-          twitter_account: twitter_account,
-          provider: 'Twitter',
+          publisher: facebook_page,
           body: 'Test body',
           publish_at: DateTime.current + 7.days,
           post_id: nil
@@ -72,7 +66,6 @@ RSpec.describe Post, type: :model do
     context 'with wrong params from scratch' do
       subject(:post) do
         described_class.new(
-          provider: '',
           body: '',
           publish_at: '',
         )

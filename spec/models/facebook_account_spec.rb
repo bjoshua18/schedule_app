@@ -12,7 +12,6 @@ RSpec.describe FacebookAccount, type: :model do
     it { is_expected.to have_field(:token_expires_at).of_type(Time) }
 
     it { is_expected.to belong_to(:user) }
-    it { is_expected.to have_many(:posts) }
 
     it { is_expected.to validate_uniqueness_of(:email) }
   end
@@ -31,7 +30,7 @@ RSpec.describe FacebookAccount, type: :model do
     end
 
     context 'with wrong params from scratch' do
-      subject(:post) do
+      subject(:facebook_account) do
         described_class.new(
           email: ''
         )
