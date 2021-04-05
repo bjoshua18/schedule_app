@@ -136,6 +136,13 @@ GEM
       activesupport (>= 5.0.0)
     json (2.5.1)
     jwt (2.2.2)
+    kaminari-actionview (1.2.1)
+      actionview
+      kaminari-core (= 1.2.1)
+    kaminari-core (1.2.1)
+    kaminari-mongoid (1.0.1)
+      kaminari-core (~> 1.0)
+      mongoid
     koala (3.0.0)
       addressable
       faraday
@@ -345,6 +352,8 @@ DEPENDENCIES
   faker
   hamlit-rails
   jbuilder (~> 2.7)
+  kaminari-actionview
+  kaminari-mongoid
   koala
   listen (~> 3.2)
   mongoid (~> 7.0.5)

@@ -69,3 +69,7 @@ gem 'twitter'
 gem 'koala'
 
 gem 'simple_form'
+
+# Kaminari
+gem 'kaminari-mongoid'
+gem 'kaminari-actionview'
