@@ -19,7 +19,6 @@ Rails.application.routes.draw do
 
   resources :twitter_accounts
   resources :facebook_accounts
-  resources :facebook_pages
   resources :posts
 
   root 'home#index'
