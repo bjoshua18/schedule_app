@@ -17,7 +17,7 @@ class TwitterAccount < Publisher
   end
 
   def publish(post)
-    tweet = self.client.update(post.body)
+    tweet = client.update(post.body)
     return tweet.id
   end
 end
