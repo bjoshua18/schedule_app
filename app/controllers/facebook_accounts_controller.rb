@@ -3,9 +3,7 @@ class FacebookAccountsController < ApplicationController
 
   def index
     @facebook_accounts = Current.user.facebook_accounts
-    @facebook_accounts.each do |acc|
-      acc.set_pages
-    end
+    @facebook_accounts.each(&:set_pages)
   end
 
   def destroy
