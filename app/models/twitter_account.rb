@@ -1,15 +1,9 @@
-class TwitterAccount
-  include Mongoid::Document
-  include Mongoid::Timestamps
-
-  field :name, type: String
+class TwitterAccount < Publisher
   field :username, type: String
   field :image, type: String
-  field :token, type: String
   field :secret, type: String
 
   belongs_to :user
-  has_many :posts, dependent: :destroy
 
   validates :username, uniqueness: true
 
@@ -20,5 +14,10 @@ class TwitterAccount
       config.access_token = token
       config.access_token_secret = secret
     end
+  end
+
+  def publish(post)
+    tweet = self.client.update(post.body)
+    return tweet.id
   end
 end

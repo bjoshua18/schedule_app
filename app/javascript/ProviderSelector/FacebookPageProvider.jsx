@@ -8,7 +8,7 @@ class FacebookPageProvider extends React.Component {
   render() {
     let options_pages = new Array();
     for (let i = 0; i<this.props.pages.length; i++) {
-        options_pages.push(<option value={i}>{this.props.pages[i].name}</option>)
+        options_pages.push(<option value={this.props.pages[i]._id["$oid"]}>{this.props.pages[i].name}</option>)
     }
 
     return (
@@ -16,7 +16,7 @@ class FacebookPageProvider extends React.Component {
             <label htmlFor="post_fb_user_page">
                 Facebook User Page
             </label>
-            <select className="form-control" id="post_facebook_account_page" name="post[facebook_account_page]">
+            <select className="form-control" id="post_publisher_id" name="post[publisher_id]">
                 <option value="">Select a page</option>
                 {options_pages}
             </select>

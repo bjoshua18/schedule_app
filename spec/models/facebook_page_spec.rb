@@ -1,38 +1,38 @@
 require 'rails_helper'
 
-RSpec.describe FacebookAccount, type: :model do
+RSpec.describe FacebookPage, type: :model do
   describe 'Document schema' do
     it { is_expected.to be_mongoid_document }
     it { is_expected.to have_timestamps }
 
     it { is_expected.to have_field(:name).of_type(String) }
-    it { is_expected.to have_field(:email).of_type(String) }
-    it { is_expected.to have_field(:image).of_type(String) }
     it { is_expected.to have_field(:token).of_type(String) }
-    it { is_expected.to have_field(:token_expires_at).of_type(Time) }
+    it { is_expected.to have_field(:page_id).of_type(String) }
+    it { is_expected.to have_field(:category).of_type(String) }
 
-    it { is_expected.to belong_to(:user) }
-
-    it { is_expected.to validate_uniqueness_of(:email) }
+    it { is_expected.to have_many(:posts) }
+    it { is_expected.to belong_to(:facebook_account) }
   end
 
   describe '#save' do
     context 'with params from FactoryBot' do
-      subject(:facebook_account) { build(:facebook_account) }
+      let(:facebook_account) { create :facebook_account }
+
+      subject(:facebook_page) { build :facebook_page, facebook_account: facebook_account }
 
       it { is_expected.to be_valid }
 
       context 'after_save' do
-        before(:each) { facebook_account.save }
+        before(:each) { facebook_page.save }
 
         it { is_expected.to be_persisted }
       end
     end
 
-    context 'with wrong params from scratch' do
-      subject(:facebook_account) do
+    context 'with no Facebook account referenced' do
+      subject(:post) do
         described_class.new(
-          email: ''
+          name: ''
         )
       end
   

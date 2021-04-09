@@ -2,17 +2,14 @@ class Post
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :provider, type: String
+  field :post_id, type: String
   field :body, type: String
   field :publish_at, type: Time
-  field :post_id, type: String
-  field :facebook_account_page, type: Integer
 
   index({publish_at: -1})
 
   belongs_to :user
-  belongs_to :twitter_account, optional: true
-  belongs_to :facebook_account, optional: true
+  belongs_to :publisher
 
   validates :body, length: { minimum: 1, maximun: 280 }
   validates :publish_at, presence: true
@@ -31,21 +28,8 @@ class Post
     post_id?
   end
 
-  def facebook?
-    facebook_account_page?
-  end
-
-  def publish_to_twitter!
-    tweet = twitter_account.client.update(body)
-    update(post_id: tweet.id)
-  end
-
-  def publish_to_facebook!
-    pages = facebook_account.pages
-    page = Koala::Facebook::API.new(pages[facebook_account_page]["access_token"])
-    fb_post = page.put_connections("me", "feed", {
-      message: body
-    })
-    update(post_id: fb_post["id"])
+  def publish_post!
+    id = publisher.publish(self)
+    update(post_id: id)
   end
 end

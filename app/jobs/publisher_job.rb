@@ -6,10 +6,6 @@ class PublisherJob < ApplicationJob
     # Reschedule a tweet to the future
     return if post.publish_at > Time.current
 
-    if post.facebook?
-      post.publish_to_facebook!
-    else
-      post.publish_to_twitter!
-    end
+    post.publish_post!
   end
 end

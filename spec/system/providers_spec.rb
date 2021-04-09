@@ -11,29 +11,29 @@ RSpec.describe "Providers", type: :system do
   end
 
   it 'should render Provider select in React component' do
-    expect(page).to have_select('Provider');
+    expect(page).to have_select('provider');
   end
 
   it 'should render Twitter User select in React component' do
-    select('Twitter', from:'Provider')
-    expect(page).to have_select('Twitter User')
+    select('Twitter', from:'provider')
+    expect(page).to have_select('post_publisher_id')
   end
 
   it 'should render Facebook User select in React component' do
-    select('Facebook', from:'Provider')
-    expect(page).to have_select('Facebook User')
+    select('Facebook', from:'provider')
+    expect(page).to have_select('facebook_account')
   end
 
   it 'should not render Twitter or Facebook User select in React component' do
-    select('Select a provider', from:'Provider')
-    expect(page).to_not have_select('Facebook User')
-    expect(page).to_not have_select('Twitter User')
+    select('Select a provider', from:'provider')
+    expect(page).to_not have_select('facebook_account')
+    expect(page).to_not have_select('post_publisher_id')
   end
 
   it 'should not render Facebook User Page select in React component' do
-    select('Facebook', from:'Provider')
-    select('Select an user', from:'Facebook User')
-    expect(page).to_not have_select('Facebook User Page')
+    select('Facebook', from:'provider')
+    select('Select an user', from:'facebook_account')
+    expect(page).to_not have_select('post_publisher_id')
   end
 
 end
