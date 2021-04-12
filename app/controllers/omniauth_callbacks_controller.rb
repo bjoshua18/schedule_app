@@ -1,3 +1,5 @@
+require 'json'
+
 class OmniauthCallbacksController < ApplicationController
   def twitter
     twitter_account = Current.user.twitter_accounts.where(username: auth.info.nickname).first_or_initialize
@@ -12,6 +14,7 @@ class OmniauthCallbacksController < ApplicationController
   end
 
   def facebook
+    puts(auth.to_json)
     facebook_account = Current.user.facebook_accounts.where(email: auth.info.email).first_or_initialize
     facebook_account.update({
       name: auth.info.name,

@@ -1,8 +1,20 @@
 .post
   .author
     .author-image
-      = image_tag post.twitter_account.image, class: 'rounded-circle me-4 w-100'
-    = link_to "@#{post.twitter_account.username}", "https://twitter.com/#{post.twitter_account.username}", class: 'link-primary', target: '_blank'
+      -# if provisional
+      - if post.publisher._type.eql? "TwitterAccount"
+        = image_tag post.publisher.image, class: 'rounded-circle me-4 w-100' 
+      - else 
+        = image_tag post.publisher.facebook_account.image, class: 'rounded-circle me-4 w-100'
+
+    .author-name 
+      - if post.publisher._type.eql? "TwitterAccount"
+        %b= post.publisher.name
+        = link_to "@#{post.publisher.username}", "https://twitter.com/#{post.publisher.username}", class: 'link-primary small', target: '_blank'
+      - else
+        %b= post.publisher.facebook_account.name
+        = link_to "@#{post.publisher.name}", "https://facebook.com/#{post.publisher.page_id}", class: 'link-primary small', target: '_blank'
+
   .post-image.w-100
     -# provisional
     = image_tag "https://loremflickr.com/320/240/dog?random=#{post.id}"
@@ -12,7 +24,11 @@
       - if post.published?
         .post-date
           = "#{time_ago_in_words post.publish_at} ago"
-        = link_to 'View Tweet', "https://twitter.com/#{post.twitter_account.username}/status/#{post.tweet_id}", target: :_blank
+        -# if provisional  
+        - if post.publisher._type.eql? "TwitterAccount"
+          = link_to 'View Tweet', "https://twitter.com/#{post.publisher.username}/status/#{post.post_id}", target: :_blank
+        - else
+          = link_to 'View Post', "https://facebook.com/#{post.post_id}", target: :_blank
       - else
         .post-date
           Scheduled for 

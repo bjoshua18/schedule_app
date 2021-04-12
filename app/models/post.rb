@@ -2,14 +2,14 @@ class Post
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  field :post_id, type: String
   field :body, type: String
   field :publish_at, type: Time
-  field :tweet_id, type: String
 
   index({publish_at: -1})
 
   belongs_to :user
-  belongs_to :twitter_account
+  belongs_to :publisher
 
   validates :body, length: { minimum: 1, maximun: 280 }
   validates :publish_at, presence: true
@@ -25,11 +25,11 @@ class Post
   end
 
   def published?
-    tweet_id?
+    post_id?
   end
 
-  def publish_to_twitter!
-    tweet = twitter_account.client.update(body)
-    update(tweet_id: tweet.id)
+  def publish_post!
+    id = publisher.publish(self)
+    update(post_id: id)
   end
 end

@@ -6,8 +6,10 @@
     Connect new account
 
 - @twitter_accounts.each do |acc|
-  .d-flex.align-items-center.mb-4
-    .me-4
+  .card.mb-4
+    .card-body.d-flex.align-items-center
       = image_tag acc.image, class: 'rounded-circle me-4'
-      = link_to "@#{acc.username}", "https://twitter.com/#{acc.username}", class: 'link-primary', target: '_blank'
-    = button_to 'Disconnect', acc, method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger'
+      .flex-fill 
+        %b= acc.name
+        = link_to "@#{acc.username}", "https://twitter.com/#{acc.username}", class: 'link-primary ms-2', target: '_blank'
+      = button_to 'Disconnect', acc, method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger'
