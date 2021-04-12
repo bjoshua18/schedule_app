@@ -18,8 +18,11 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback', to: 'omniauth_callbacks#facebook'
 
   resources :twitter_accounts
-  resources :facebook_accounts
-  resources :facebook_pages
+  resources :facebook_accounts do
+    collection do
+      get 'refresh_pages'
+    end
+  end
   resources :posts
 
   root 'home#index'
