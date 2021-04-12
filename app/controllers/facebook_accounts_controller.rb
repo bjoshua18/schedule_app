@@ -3,7 +3,15 @@ class FacebookAccountsController < ApplicationController
 
   def index
     @facebook_accounts = Current.user.facebook_accounts
-    @facebook_accounts.each(&:set_pages)
+  end
+
+  def refresh_pages
+    @facebook_accounts = Current.user.facebook_accounts
+    if @facebook_accounts
+      @facebook_accounts.each(&:set_pages)
+      notice = 'Successfully updated Facebook Pages'
+    end
+    redirect_to facebook_accounts_url, notice: notice || 'Unable to refresh Facebook Pages'
   end
 
   def destroy
