@@ -3,8 +3,9 @@ require 'rails_helper'
 RSpec.describe PostsHelper, type: :helper do
   context '' do
     let(:user) { create :user_with_many_accounts, tw_counter: 1, fb_counter: 0 }
-    let!(:scheduled_posts) { create_list :post, 2, user: user }
-    let!(:published_posts) { create_list :published_post, 5, user: user }
+    let(:image) { Rack::Test::UploadedFile.new(File.join(Rails.root, '/spec/fixtures/posts/page_flow.png'), 'image/png') }
+    let!(:scheduled_posts) { create_list :post, 2, user: user, image: image }
+    let!(:published_posts) { create_list :published_post, 5, user: user, image: image }
     before(:each) { Current.user = user }
 
     describe '#scheduled_posts' do
