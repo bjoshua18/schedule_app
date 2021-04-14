@@ -1,7 +1,9 @@
-= simple_form_for post do |f|
+= simple_form_for post, html: { class: 'my-4', multipart: true } do |f|
   = render 'shared/form_errors', form: f
 
   #provider{ tw_accounts: Current.user.twitter_accounts.to_json, fb_accounts: Current.user.facebook_accounts.to_json }
+  .mb-3
+    = render 'image_upload', f: f, post: post
   .mb-3
     = f.input :body, as: :text, input_html: { class: 'form-control' }
   .mb-3

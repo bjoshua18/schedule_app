@@ -16,8 +16,7 @@
         = link_to "@#{post.publisher.name}", "https://facebook.com/#{post.publisher.page_id}", class: 'link-primary small', target: '_blank'
 
   .post-image.w-100
-    -# provisional
-    = image_tag "https://loremflickr.com/320/240/dog?random=#{post.id}"
+    = image_tag post.image.url
   %p.post-body= post.body
   .post-data
     .post-options
@@ -35,7 +34,7 @@
           %b
             = l post.publish_at, format: :long
         .post-btns
-          = link_to edit_post_path(post), class: 'btn btn-primary m-2' do
+          = link_to edit_post_path(post), class: 'btn btn-primary mx-1' do
             %i.bi.bi-pencil-fill
-          = button_to post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger m-2' do
+          = button_to post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger mx-1' do
             %i.bi.bi-trash-fill

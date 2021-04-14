@@ -14,8 +14,8 @@ RSpec.describe "Posts", type: :request do
     let(:facebook_account) { create :facebook_account, user: user }
     let(:twitter_account) { create :twitter_account, user: user }
     let(:facebook_page) { create :facebook_page, facebook_account: facebook_account }
-    let(:post1) { create :post, { user: user, publisher: twitter_account } }
-    let(:post2) { create :post, { user: user, publisher: facebook_page } }
+    let(:post1) { create :post_with_image, { user: user, publisher: twitter_account } }
+    let(:post2) { create :post_with_image, { user: user, publisher: facebook_page } }
 
     before(:each) { login_as user }
 
@@ -43,7 +43,8 @@ RSpec.describe "Posts", type: :request do
           post: {
             publisher_id: twitter_account.id.to_s,
             body: 'body test',
-            publish_at: (DateTime.current + 7.days).to_s
+            publish_at: (DateTime.current + 7.days).to_s,
+            image: Rack::Test::UploadedFile.new(File.join(Rails.root, '/spec/fixtures/posts/page_flow.png'), 'image/png')
           }
         }  
       end
@@ -64,7 +65,8 @@ RSpec.describe "Posts", type: :request do
           post: {
             publisher_id: facebook_page.id.to_s,
             body: 'body test',
-            publish_at: (DateTime.current + 7.days).to_s
+            publish_at: (DateTime.current + 7.days).to_s,
+            image: Rack::Test::UploadedFile.new(File.join(Rails.root, '/spec/fixtures/posts/page_flow.png'), 'image/png')
           }
         }  
       end

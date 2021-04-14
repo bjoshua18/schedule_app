@@ -1,0 +1,12 @@
+.drag-area.col-6
+  .drag-content{ class: ('d-none' if post.image.file) }
+    .icon
+      %i.bi.bi-cloud-upload
+    .drag-area-message Drag & Drop to Upload Image
+    %span OR
+    %button.upload-btn Browse Image
+  - if post.image.file
+    = image_tag post.image.url
+  = f.file_field :image, class: 'upload-input', accept: 'image/*'
+
+= javascript_pack_tag 'image_upload', 'data-turbolinks-track': 'reload'

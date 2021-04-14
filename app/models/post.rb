@@ -1,4 +1,5 @@
 class Post
+  require 'carrierwave/mongoid'
   include Mongoid::Document
   include Mongoid::Timestamps
 
@@ -11,8 +12,11 @@ class Post
   belongs_to :user
   belongs_to :publisher
 
+  mount_uploader :image, PostImageUploader
+
   validates :body, length: { minimum: 1, maximun: 280 }
   validates :publish_at, presence: true
+  validates :image, presence: true
 
   after_initialize do
     self.publish_at ||= 1.minute.from_now

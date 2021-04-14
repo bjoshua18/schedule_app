@@ -27,7 +27,8 @@ RSpec.describe Post, type: :model do
           publisher: twitter_account,
           body: 'Test body',
           publish_at: DateTime.current + 7.days,
-          post_id: nil
+          post_id: nil,
+          image: Rack::Test::UploadedFile.new(File.join(Rails.root, '/spec/fixtures/posts/page_flow.png'), 'image/png')
         )
       end
 
@@ -50,7 +51,8 @@ RSpec.describe Post, type: :model do
           publisher: facebook_page,
           body: 'Test body',
           publish_at: DateTime.current + 7.days,
-          post_id: nil
+          post_id: nil,
+          image: Rack::Test::UploadedFile.new(File.join(Rails.root, '/spec/fixtures/posts/page_flow.png'), 'image/png')
         )
       end
 

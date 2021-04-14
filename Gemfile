@@ -69,3 +69,5 @@ gem 'twitter'
 gem 'koala'
 
 gem 'simple_form'
+gem 'carrierwave', '~> 2.0'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'

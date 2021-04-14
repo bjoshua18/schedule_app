@@ -11,7 +11,8 @@ RSpec.describe "home/index.html.haml", type: :view do
   context 'to users' do
     let(:user_without_acc) { create :user }
     let(:user_with_acc) { create :user_with_many_accounts, tw_counter: 2, fb_counter: 2 }
-    let(:posts) { create_list :post, 5, user: user_with_acc }
+    let(:image) { Rack::Test::UploadedFile.new(File.join(Rails.root, '/spec/fixtures/posts/page_flow.png'), 'image/png') }
+    let(:posts) { create_list :post, 2, user: user_with_acc, image: image }
 
     describe 'without accounts' do
       before(:each) do
