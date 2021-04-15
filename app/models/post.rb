@@ -14,12 +14,12 @@ class Post
 
   mount_uploader :image, PostImageUploader
 
-  validates :body, length: { minimum: 1, maximun: 280 }
+  validates :body, length: { minimum: 1, maximum: 280 }
   validates :publish_at, presence: true
   validates :image, presence: true
 
   after_initialize do
-    publish_at ||= 1.minute.from_now
+    self.publish_at ||= 1.minute.from_now
   end
   
   after_save do

@@ -38,8 +38,11 @@ RSpec.describe "posts/index.html.haml", type: :view do
   context 'user with more than 2 posts' do
     let(:user) { create :user_with_many_accounts, tw_counter: 1 }
     let(:image) { Rack::Test::UploadedFile.new(File.join(Rails.root, '/spec/fixtures/posts/page_flow.png'), 'image/png') }
-    let(:posts) { create_list :post, 5, user: user, image: image }
-    before(:each) { Current.user = user }
+    let(:posts) { create_list :post_with_image, 5, user: user, image: image }
+    before(:each) { 
+      Current.user = user
+      user.posts = posts
+    }
 
     it 'render posts' do
       @posts = user.posts.page(params[:page])
@@ -51,7 +54,7 @@ RSpec.describe "posts/index.html.haml", type: :view do
     end
 
     describe 'render a scheduled post' do
-      let(:scheduled_post) { create :post, user: user, image: image }
+      let(:scheduled_post) { create :post_with_image, user: user, image: image }
 
       it 'render post-btns' do
         render scheduled_post
@@ -75,7 +78,7 @@ RSpec.describe "posts/index.html.haml", type: :view do
 
   context 'user with 2 posts or less' do
     let(:user) { create :user_with_many_accounts, tw_counter: 1 }
-    let(:posts) { create_list :post, 2, user: user }
+    let(:posts) { create_list :post_with_image, 2, user: user }
     before(:each) { 
       Current.user = user 
       user.posts = posts
