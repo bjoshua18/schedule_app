@@ -30,7 +30,6 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
   gem 'factory_bot_rails'
-  gem 'hamlit-rails'
 end
 
 group :development do
@@ -55,8 +54,8 @@ group :test do
   gem 'rspec-sidekiq'
 end
 
-# DateTime Validations
-# gem 'validates_timeliness', '~> 3.0.5'
+# Template engine
+gem 'hamlit-rails'
 
 # Authorization
 gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter'
@@ -71,7 +70,7 @@ gem 'koala'
 
 gem 'simple_form'
 
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.2.1'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 
 # Sidekiq
