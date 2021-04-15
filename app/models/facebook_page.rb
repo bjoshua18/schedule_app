@@ -9,7 +9,7 @@ class FacebookPage < Publisher
   end
 
   def publish(post)
-    fb_post = self.client.put_picture(post.image.file.file, {
+    fb_post = self.client.put_picture(post.file_url, {
       message: post.body
     })
     return fb_post["id"]

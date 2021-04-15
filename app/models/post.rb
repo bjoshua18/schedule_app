@@ -36,4 +36,8 @@ class Post
     id = publisher.publish(self)
     update(post_id: id)
   end
+
+  def file_url
+    image.file.file
+  end
 end
