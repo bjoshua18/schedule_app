@@ -20,7 +20,7 @@ class Post
   
   after_save do
     if publish_at_previously_changed?
-      PublisherJob.set(wait_until: publish_at).perform_later(self)
+      PublisherWorker.perform_at(publish_at, _id)
     end
   end
 

@@ -52,6 +52,7 @@ group :test do
   gem 'mongoid-rspec'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'
+  gem 'rspec-sidekiq'
 end
 
 # DateTime Validations
@@ -69,6 +70,9 @@ gem 'twitter'
 gem 'koala'
 
 gem 'simple_form'
+
+# Sidekiq
+gem 'sidekiq'
 
 # Kaminari
 gem 'kaminari-mongoid'
