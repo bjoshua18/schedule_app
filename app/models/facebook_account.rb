@@ -24,8 +24,8 @@ class FacebookAccount
   def set_pages
     current_pages = facebook_pages.all
     current_pages.each do |cpage|
-      page = pages.find { |page| page["id"].eql? cpage["page_id"] }
-      if !page
+      page = pages.find { |page| page["id"].eql? cpage.page_id }
+      unless page
         cpage.delete
       end
     end
