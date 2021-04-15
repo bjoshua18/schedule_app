@@ -52,6 +52,7 @@ group :test do
   gem 'mongoid-rspec'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'
+  gem 'rspec-sidekiq'
 end
 
 # DateTime Validations
@@ -69,5 +70,13 @@ gem 'twitter'
 gem 'koala'
 
 gem 'simple_form'
+
 gem 'carrierwave', '~> 2.0'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+
+# Sidekiq
+gem 'sidekiq'
+
+# Kaminari
+gem 'kaminari-mongoid'
+gem 'kaminari-actionview'

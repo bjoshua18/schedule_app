@@ -5,7 +5,7 @@ class FacebookPage < Publisher
   belongs_to :facebook_account
 
   def client
-    Koala::Facebook::API.new(token)
+    @client = Koala::Facebook::API.new(token)
   end
 
   def publish(post)

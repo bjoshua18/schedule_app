@@ -2,13 +2,13 @@
   .author
     .author-image
       -# if provisional
-      - if post.publisher._type.eql? "TwitterAccount"
+      - if post.publisher.kind_of?(TwitterAccount)
         = image_tag post.publisher.image, class: 'rounded-circle me-4 w-100' 
       - else 
         = image_tag post.publisher.facebook_account.image, class: 'rounded-circle me-4 w-100'
 
     .author-name 
-      - if post.publisher._type.eql? "TwitterAccount"
+      - if post.publisher.kind_of?(TwitterAccount)
         %b= post.publisher.name
         = link_to "@#{post.publisher.username}", "https://twitter.com/#{post.publisher.username}", class: 'link-primary small', target: '_blank'
       - else
@@ -24,7 +24,7 @@
         .post-date
           = "#{time_ago_in_words post.publish_at} ago"
         -# if provisional  
-        - if post.publisher._type.eql? "TwitterAccount"
+        - if post.publisher.kind_of?(TwitterAccount)
           = link_to 'View Tweet', "https://twitter.com/#{post.publisher.username}/status/#{post.post_id}", target: :_blank
         - else
           = link_to 'View Post', "https://facebook.com/#{post.post_id}", target: :_blank

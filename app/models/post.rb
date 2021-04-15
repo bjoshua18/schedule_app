@@ -19,12 +19,12 @@ class Post
   validates :image, presence: true
 
   after_initialize do
-    self.publish_at ||= 1.minute.from_now
+    publish_at ||= 1.minute.from_now
   end
   
   after_save do
     if publish_at_previously_changed?
-      PublisherJob.set(wait_until: publish_at).perform_later(self)
+      PublisherWorker.perform_at(publish_at, _id)
     end
   end
 
