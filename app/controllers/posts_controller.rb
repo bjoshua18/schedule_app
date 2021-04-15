@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :include_fb_pages, only: [:new, :create, :update]
 
   def index
-    @posts = Current.user.posts.order_by(publish_at: -1)
+    @posts = Current.user.posts.order_by(publish_at: -1).page(params[:page])
   end
 
   def new
