@@ -4,6 +4,9 @@
   = button_to 'auth/facebook', method: :post, class: 'btn btn-primary' do
     %i.bi.bi-facebook.icon_mr
     Connect new account
+  = button_to refresh_pages_facebook_accounts_url, method: :get, class: 'btn btn-success' do
+    %i.bi.bi-facebook.icon_mr
+    Refresh Pages
 
 - @facebook_accounts.each do |acc|
   .card.mb-4

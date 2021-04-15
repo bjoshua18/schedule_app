@@ -24,6 +24,16 @@ RSpec.describe "FacebookAccounts", type: :request do
       end
     end
 
+    describe 'GET #refresh_pages' do
+      it 'refresh Facebook pages succesfully' do
+        get refresh_pages_facebook_accounts_url
+
+        expect(response).to redirect_to(:facebook_accounts)
+        follow_redirect!
+        expect(response.body).to include ("Successfully updated Facebook Pages")
+      end
+    end
+
     describe 'DELETE #destroy' do
       it 'destroy facebook account and redirect to facebook accounts index' do
         delete "#{facebook_accounts_url}/#{account.id}"

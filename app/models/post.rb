@@ -15,7 +15,7 @@ class Post
   validates :publish_at, presence: true
 
   after_initialize do
-    self.publish_at ||= 1.minute.from_now
+    publish_at ||= 1.minute.from_now
   end
   
   after_save do

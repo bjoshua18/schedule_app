@@ -73,3 +73,7 @@ gem 'simple_form'
 
 # Sidekiq
 gem 'sidekiq'
+
+# Kaminari
+gem 'kaminari-mongoid'
+gem 'kaminari-actionview'

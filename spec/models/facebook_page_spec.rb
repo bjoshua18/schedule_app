@@ -30,9 +30,9 @@ RSpec.describe FacebookPage, type: :model do
     end
 
     context 'with no Facebook account referenced' do
-      subject(:post) do
+      subject(:facebook_page) do
         described_class.new(
-          name: ''
+          name: nil
         )
       end
   
