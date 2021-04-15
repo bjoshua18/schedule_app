@@ -33,3 +33,6 @@ yarn-debug.log*
 .yarn-integrity
 
 /config/credentials/development.key
+
+# Ignore all uploaded post images
+/public/uploads/*

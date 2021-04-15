@@ -17,7 +17,7 @@ class TwitterAccount < Publisher
   end
 
   def publish(post)
-    tweet = client.update(post.body)
+    tweet = self.client.update_with_media(post.body, File.open(post.file_url))
     return tweet.id
   end
 end

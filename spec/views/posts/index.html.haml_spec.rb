@@ -37,11 +37,9 @@ RSpec.describe "posts/index.html.haml", type: :view do
 
   context 'user with more than 2 posts' do
     let(:user) { create :user_with_many_accounts, tw_counter: 1 }
-    let(:posts) { create_list :post, 5, user: user }
-    before(:each) { 
-      Current.user = user 
-      user.posts = posts
-    }
+    let(:image) { Rack::Test::UploadedFile.new(File.join(Rails.root, '/spec/fixtures/posts/page_flow.png'), 'image/png') }
+    let(:posts) { create_list :post, 5, user: user, image: image }
+    before(:each) { Current.user = user }
 
     it 'render posts' do
       @posts = user.posts.page(params[:page])
@@ -53,7 +51,7 @@ RSpec.describe "posts/index.html.haml", type: :view do
     end
 
     describe 'render a scheduled post' do
-      let(:scheduled_post) { create :post, user: user }
+      let(:scheduled_post) { create :post, user: user, image: image }
 
       it 'render post-btns' do
         render scheduled_post
@@ -64,7 +62,7 @@ RSpec.describe "posts/index.html.haml", type: :view do
     end
 
     describe 'render a published post' do
-      let(:published_post) { create :published_post, user: user }
+      let(:published_post) { create :published_post, user: user, image: image }
 
       it 'render time_ago and link_to tweet' do
         render published_post

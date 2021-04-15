@@ -9,5 +9,9 @@ FactoryBot.define do
     factory :published_post do
       post_id { '00000000000' }
     end
+
+    factory :post_with_image do
+      image { Rack::Test::UploadedFile.new(File.join(Rails.root, '/spec/fixtures/posts/page_flow.png'), 'image/png') }
+    end
   end
 end

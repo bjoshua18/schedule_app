@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "posts/edit.html.haml", type: :view do
-  let(:post) { create :post }
+  let(:post) { create :post_with_image }
   it 'render edit post form' do
     @post = post
     render
