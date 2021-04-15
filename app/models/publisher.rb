@@ -5,5 +5,7 @@ class Publisher
   field :name, type: String
   field :token, type: String
 
+  validates :name, :token, presence: true
+
   has_many :posts, dependent: :destroy
 end
