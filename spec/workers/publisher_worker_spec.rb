@@ -4,7 +4,7 @@ Sidekiq::Testing.fake!
 RSpec.describe PublisherWorker, type: :worker do
   describe 'Sidekiq Worker' do
     
-    let(:post) { create :post }
+    let(:post) { create :post_with_image }
 
     it 'should respond to #perform' do
       expect(PublisherWorker.new).to respond_to(:perform)

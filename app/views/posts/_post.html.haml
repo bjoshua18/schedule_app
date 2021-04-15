@@ -16,7 +16,7 @@
         = link_to "@#{post.publisher.name}", "https://facebook.com/#{post.publisher.page_id}", class: 'link-primary small', target: '_blank'
 
   .post-image.w-100
-    = image_tag post.image.url
+    = image_tag post.image_url
   %p.post-body= post.body
   .post-data
     .post-options
