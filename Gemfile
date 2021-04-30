@@ -79,3 +79,10 @@ gem 'sidekiq'
 # Kaminari
 gem 'kaminari-mongoid'
 gem 'kaminari-actionview'
+
+# Image upload to S3
+gem 'carrierwave-aws'
+gem 'carrierwave', '~> 2.2.1'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'mini_magick'
+gem 'aws-sdk-rails'
